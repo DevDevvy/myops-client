@@ -1,0 +1,14 @@
+.tip-container{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.authored-tips-title{
+    text-align: center;
+}
+
+.authored-tips-container{
+    display: flex;
+    justify-content: center;
+}

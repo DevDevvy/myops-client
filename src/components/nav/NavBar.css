@@ -1,0 +1,11 @@
+.nav-buttons{
+    text-decoration: none;
+    color:rgb(86, 134, 178);
+    margin-left: 1em;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+}
+

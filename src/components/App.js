@@ -4,15 +4,20 @@ import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
-
+import { UserProvider } from "../UserContext"
+import "./App.css"
 export const App = () => (
     <>
         <Route render={() => {
             if (localStorage.getItem("auth_token")) {
                 return <>
                     <Route>
-                        <NavBar />
-                        <ApplicationViews />
+                        <UserProvider>
+                            <div id="app-container">
+                            <NavBar />
+                            <ApplicationViews />
+                            </div>
+                        </UserProvider>
                     </Route>
                 </>
             } else {

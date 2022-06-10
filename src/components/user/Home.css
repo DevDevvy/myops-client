@@ -1,0 +1,70 @@
+.app-name{
+    text-align: center;
+}
+
+.user-tips-list{
+    display: flex;
+    flex-direction: row;
+    padding: 1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.tip-container{
+    margin: .3em;
+}
+
+.chip{
+    margin-right: .5em;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+#checkin{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+.charts-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2em 0 2em 0;
+    height: 30em;
+}
+
+
+
+#line-chart{
+    height: 100%;
+    width: 60%;
+}
+#pie-chart{
+    width: 30%;
+}
+
+@media screen and (max-width: 800px) {
+    .charts-container{
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        flex-direction: column-reverse;
+    }
+    #line-chart{
+        height: 30em;
+        width: 80%;
+        margin: 4% 1% 1% 2%;
+        
+    }
+    #pie-chart{
+        width: 100%;
+    }
+    }
+
+.new-tip-button{
+
+}
