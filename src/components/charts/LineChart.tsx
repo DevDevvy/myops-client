@@ -24,13 +24,13 @@ ChartJS.register(
 
 const Home: FC<CheckInProps> = (props): JSX.Element => {
     <>
-    {props.checkins}
+        {props.checkins}
     </>
 }
 
 interface CheckInProps {
     checkins: array,
-    
+
 }
 
 export const options = {
@@ -45,47 +45,60 @@ export const options = {
             text: 'MyOps Personal Tracking',
         },
     },
+
+    scales: {
+        y: {
+            grid: {
+                color: '#696969'
+            }
+        },
+        x: {
+            grid: {
+                color: '#696969'
+            }
+        }
+    }
 };
 
 
 
 
 
-export const LineChart = ({checkins}: CheckInProps) => {
-    
-    const labels = checkins.map(checkin=> checkin.date);
+export const LineChart = ({ checkins }: CheckInProps) => {
+
+    const labels = checkins.map(checkin => checkin.date);
     const data = {
         labels,
         datasets: [
             {
                 label: 'Mood',
                 data: checkins.map(checkin => checkin.mood_score),
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                backgroundColor: 'rgba(255, 99, 132, .8)',
+                borderColor: 'rgba(255, 99, 132, 0.6)',
             },
             {
                 label: 'Self-Talk',
                 data: checkins.map(checkin => checkin.self_talk),
-                borderColor: 'rgb(53, 162, 235)',
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+                backgroundColor: 'rgba(255, 159, 64, .8)',
+                borderColor: 'rgba(255, 159, 64, 0.6)',
             },
             {
                 label: 'Sleep Quality',
                 data: checkins.map(checkin => checkin.sleep_quality),
-                borderColor: 'rgb(240,255,80)',
-                backgroundColor: 'rgba(255,255,0,0.51)',
+                backgroundColor: 'rgba(255, 206, 86, .8)',
+                borderColor: 'rgba(255, 206, 86, 0.6)',
             },
             {
                 label: 'Coping Strategies',
                 data: checkins.map(checkin => checkin.coping_strategies),
-                borderColor: 'rgb(0,255,0)',
-                backgroundColor: 'rgba(0,255,0,0.5)',
+                backgroundColor: 'rgba(75, 192, 192, .8)',
+                borderColor: 'rgba(75, 192, 192, 0.6)',
             },
             {
                 label: 'Productivity',
                 data: checkins.map(checkin => checkin.productivity),
-                borderColor: 'rgb(255,255,255)',
-                backgroundColor: 'rgba(255,255,255,0.5)',
+                backgroundColor: 'rgba(153, 102, 255, .8)',
+                borderColor: 'rgba(153, 102, 255, 0.6)',
             },
         ],
     };

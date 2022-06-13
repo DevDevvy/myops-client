@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { CheckInForm } from "./checkin/CheckInForm"
+import { JournalDetail } from "./journal/JournalDetail"
 import { EditTip } from "./tips/EditTip"
 import { TipList } from "./tips/TipsList"
 import { Home } from "./user/Home"
@@ -19,6 +20,9 @@ export const ApplicationViews = () => {
             </Route>
         <Route exact path="/tipedit/:tipId(\d+)">
                 < EditTip />
+            </Route>
+        <Route exact path="/journals/:journalId(\d+)">
+                < JournalDetail />
             </Route>
         </main>
     </>

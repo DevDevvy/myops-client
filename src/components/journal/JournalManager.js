@@ -1,0 +1,10 @@
+import { Settings } from "../utils/settings"
+
+export const getSingleJournal = (id) => {
+    return fetch(`${Settings.API}/journals/${id}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+        .then(response => response.json())
+}

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { favorite, getTips, unfavorite } from "./TipsManager"
-import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
