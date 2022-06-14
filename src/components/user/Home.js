@@ -5,12 +5,12 @@ import { UserContext } from "../../UserContext";
 import { NewTipForm } from "../tips/NewTipForm";
 import "./Home.css"
 import { FavoritedTipsList } from "../tips/FavoritedTipsList";
-import { Button } from "@mui/material";
+import  Button  from "@mui/material/Button"
 import { getMoods } from "../moods/MoodsManager";
 import { LineChart } from "../charts/LineChart.tsx";
 import { getCheckIns } from "../checkin/CheckInManager";
 import { PieChart } from "../charts/PieChart.tsx";
-import { Divider } from "@material-ui/core";
+import Divider from '@mui/material/Divider';
 import { JournalList } from "../journal/JournalList";
 import { getUserJournals } from "./UserManager";
 
@@ -44,10 +44,17 @@ export const Home = () => {
             </article>
             < Divider variant="middle"/>
             <div id="checkin">
-                <Button component={Link} to="/checkin" size="large" color="success" variant="contained">CHECK IN</Button>
+                <Button component={Link} 
+                    to="/checkin" 
+                    size="large" 
+                    color="success" 
+                    variant="contained" 
+                    id="checkin">
+                        CHECK IN
+                </Button>
             </div>
             <div className="user-tips-list">
-                < JournalList journals={journals} />
+                < JournalList journals={journals} setJournals={setJournals}/>
                 < FavoritedTipsList favorites={favorites} />
                 <div className="user-tips">
                     < NewTipForm setUserTips={setUserTips} currentUser={currentUser} moods={moods} setMoods={setMoods} />

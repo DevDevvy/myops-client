@@ -1,4 +1,5 @@
 
+import Divider from '@mui/material/Divider';
 import { Chip } from "@mui/material";
 
 
@@ -7,7 +8,8 @@ export const FavoritedTipsList = ({ favorites }) => {
     return <>
 
         <div className="favorited-tips">
-            <h2>Favorite Tips</h2>
+            <h2 className="authored-tips-title" >Favorite Tips</h2>
+            < Divider variant="middle"/>
             <ul>
                 {
                     favorites?.map(fave => {

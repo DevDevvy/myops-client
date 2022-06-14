@@ -58,7 +58,7 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
     }
     return (
         <div className='authored-tips-container'>
-            <Button id="new-tip-button" variant="contained" size="small"  onClick={handleClickOpen}>
+            <Button className="small-button" variant="contained" size="small"  onClick={handleClickOpen}>
                 Create New Tip
             </Button>
             <Dialog

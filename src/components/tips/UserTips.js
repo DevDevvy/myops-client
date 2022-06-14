@@ -4,9 +4,10 @@ import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip'
 import { deleteTip, getUserTips } from "./TipsManager";
 import EditIcon from '@mui/icons-material/Edit';
-import "./UserTips.css"
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton } from "@mui/material";
+import "./UserTips.css"
+import { Divider } from "@material-ui/core";
 
 export const UserTipList = ({ userTips, setUserTips, moods }) => {
     const [open, setOpen] = useState(false);
@@ -19,7 +20,7 @@ export const UserTipList = ({ userTips, setUserTips, moods }) => {
     return (
         <article className="tips">
             <h2 className="authored-tips-title">Authored Tips:</h2>
-            
+            < Divider variant="middle"/>
 
                 {
                     userTips?.map(tip => {

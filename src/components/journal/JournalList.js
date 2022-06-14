@@ -1,16 +1,56 @@
-import { Button } from "@material-ui/core"
+import Button from "@mui/material/Button"
 import { Chip } from "@mui/material"
 import { Link } from "react-router-dom"
- export const JournalList = ({ journals }) => {
-    return <article className="journal-list-container">
+import Divider from '@mui/material/Divider';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { IconButton } from "@mui/material";
+import { useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { deleteJournal } from "./JournalManager";
 
-        <Button component={Link} to="/newjournal" className="new-tip-button" variant="contained" size="small" >
+export const JournalList = ({ journals, setJournals }) => {
+    const history = useHistory()
+    const [open, setOpen] = useState(false)
+    const [selectedJournal, setSelectedJournal] = useState(0)
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+    return <article className="journal-list-container">
+        <Button component={Link} to="/newjournal" variant="contained" size="small" id="journal-button" >
             New Journal
         </Button>
+        <h2 className="authored-tips-title">Journal Entries</h2>
+        < Divider variant="middle" />
+        <div className="journals-container">
         {
             journals.map(
                 journal => {
-                    return <div key={journal.id}>
+                    return <div key={journal.id} >
+                        <IconButton onClick={() => {
+                            setSelectedJournal(journal.id)
+                            setOpen(true)
+                        }
+                        }>
+                            <DeleteForeverIcon />
+                        </IconButton>
+                        <IconButton onClick={() => {
+                            history.push({ 
+                                pathname: `/editjournal/${journal.id}`,
+                                // to be used with useLocation to change state
+                        })
+                            
+                        }}>
+                            <EditIcon />
+                        </IconButton>
                         <Chip size="small"
                             color="primary"
                             variant="outlined"
@@ -20,7 +60,32 @@ import { Link } from "react-router-dom"
                         <Link to={`/journals/${journal.id}`}>{journal.title}</Link>--{journal.date}
                     </div>
                 }
-            )
+            ).reverse()
         }
+        </div>
+        <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title">
+            <DialogTitle id="alert-dialog-title">
+                {"Permanently Delete Entry?"}
+            </DialogTitle>
+            <DialogContent>
+
+            </DialogContent>
+            <DialogActions>
+                <Button onClick={handleClose}>Cancel</Button>
+                <Button
+                    onClick={
+                        () =>
+                            deleteJournal(selectedJournal)
+                                .then(data=> setJournals(data))
+                                .then(handleClose)
+                    }>
+                    Delete
+                </Button>
+            </DialogActions>
+        </Dialog>
     </article>
+
 }
