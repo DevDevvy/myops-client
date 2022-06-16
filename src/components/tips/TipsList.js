@@ -22,7 +22,7 @@ export const TipList = () => {
 
     useEffect(() => {
         getMoods()
-            .then(data=> setMoods(data))
+            .then(data => setMoods(data))
             .then(getTips)
             .then(data => setTips(data))
     }, [])
@@ -30,42 +30,45 @@ export const TipList = () => {
     const userFavorites = currentUser.favoritedtips
     return (
         <article className="tips">
-            < TipSearchBar moods={moods} setTips={setTips}/>
+            < TipSearchBar moods={moods} setTips={setTips} />
             <h2>Tip List:</h2>
             {
                 tips.map(tip => {
                     const fave = userFavorites?.find(fave => fave.id === tip.id)
                     return <article key={`tip--${tip.id}`} className="tip">
-                        <Stack direction="column">
-                            <div className="tip-container">
-                                {
-                                    fave ?
-                                        <IconButton onClick={() =>
-                                            unfavorite(tip.id)
-                                                .then(getCurrentUser)
-                                                .then(data => setUser(data))
-                                        } >
-                                            <FavoriteIcon
-                                                sx={{ color: pink[500] }} />
-                                        </IconButton>
-                                        :
-                                        <IconButton onClick={() =>
-                                            favorite(tip.id)
-                                                .then(getCurrentUser)
-                                                .then(data => setUser(data))
-                                        }>
-                                            <FavoriteBorderIcon />
-                                        </IconButton>
-                                }
-                                <Chip size="small"
-                                    color="primary"
-                                    variant="outlined"
-                                    label={tip.mood.mood}
-                                    className="chip">
-                                </Chip>
-                                {tip.tip}
-                            </div>
-                        </Stack>
+                        { tip.public ? 
+                            <Stack direction="column">
+                                <div className="tip-container">
+                                    {
+                                        fave ?
+                                            <IconButton onClick={() =>
+                                                unfavorite(tip.id)
+                                                    .then(getCurrentUser)
+                                                    .then(data => setUser(data))
+                                            } >
+                                                <FavoriteIcon
+                                                    sx={{ color: pink[500] }} />
+                                            </IconButton>
+                                            :
+                                            <IconButton onClick={() =>
+                                                favorite(tip.id)
+                                                    .then(getCurrentUser)
+                                                    .then(data => setUser(data))
+                                            }>
+                                                <FavoriteBorderIcon />
+                                            </IconButton>
+                                    }
+                                    <Chip size="small"
+                                        color="primary"
+                                        variant="outlined"
+                                        label={tip.mood.mood}
+                                        className="chip">
+                                    </Chip>
+                                    {tip.tip}
+                                </div>
+                            </Stack>
+                            : null
+                        }
                     </article>
                 })
             }

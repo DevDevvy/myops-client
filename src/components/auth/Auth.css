@@ -10,7 +10,7 @@
     background-color: rgba(94, 117, 142, 0.656);
 }
 
-#login-container{
+.login-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,6 +44,3 @@
     margin-top: 2em;
 }
 
-/* h3{
-    color: white;
-} */

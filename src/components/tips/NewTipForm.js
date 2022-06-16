@@ -11,6 +11,7 @@ import { forwardRef, useEffect, useState } from 'react';
 import { createTip, getUserTips } from './TipsManager';
 import { FormControl } from '@mui/material';
 import { Zoom } from '@mui/material';
+import Switch from '@mui/material/Switch';
 
 const Transition = forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
@@ -18,13 +19,13 @@ const Transition = forwardRef(function Transition(props, ref) {
 
 export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
     const [open, setOpen] = useState(false);
-    
     const [tip, setTip] = useState({
         tip: "",
-        mood: 1
+        mood: 1,
+        public: false
     })
 
-    
+
 
     const updateTipsList = () => {
         getUserTips(currentUser.user_id).then(data => setUserTips(data))
@@ -36,6 +37,12 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
     const handleClose = () => {
         setOpen(false);
         clearTip()
+    };
+
+    const handleChange = (e) => {
+        const copy = { ...tip }
+        copy.public = !copy.public
+        setTip(copy)
     };
 
     const tipHandler = (e) => {
@@ -52,13 +59,14 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
     const clearTip = () => {
         const tip = {
             tip: "",
-            mood: 1
+            mood: 1,
+            public: false
         }
         setTip(tip)
     }
     return (
         <div className='authored-tips-container'>
-            <Button className="small-button" variant="contained" size="small"  onClick={handleClickOpen}>
+            <Button className="small-button" variant="contained" size="small" onClick={handleClickOpen}>
                 Create New Tip
             </Button>
             <Dialog
@@ -74,7 +82,8 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
                             label="New Tip"
                             value={tip.tip}
                             type="text"
-                            fullWidth
+                            fullWidth multiline
+                            rows={2}
                             variant="standard"
                             onChange={tipHandler}
                         />
@@ -94,6 +103,12 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
                             )
                         }
                     </RadioGroup>
+                    <FormControlLabel control={<Switch
+                        checked={tip.public}
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'controlled' }} />} 
+                        label="Make Public"
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

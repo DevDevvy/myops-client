@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
-import getUser, { getCurrentUser } from "./components/user/UserManager"
+import {getCurrentUser}  from "./components/user/UserManager"
 
 
 export const UserContext = createContext();

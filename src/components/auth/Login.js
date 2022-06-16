@@ -9,7 +9,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import Visibility from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
@@ -60,7 +59,7 @@ export const Login = () => {
           <Button id="close" size="small" variant="outlined" onClick={e => invalidDialog.current.close()}>Close</Button>
         </div>
       </dialog>
-      <div id="login-container">
+      <div className="login-container">
         <Box component="form" onSubmit={handleLogin} sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
         }} className="sign-in-container">

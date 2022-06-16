@@ -7,6 +7,7 @@ import { useState } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import { Button, Divider, Slider } from '@mui/material';
 import "./CheckInForm.css"
+import Stack from '@mui/material/Stack';
 import SendIcon from '@mui/icons-material/Send';
 import { createCheckin } from './CheckInManager';
 import { useHistory } from 'react-router-dom';
@@ -65,6 +66,7 @@ export const CheckInForm = () => {
         learning_time: 0,
         exercise_time: 0
     });
+    // hover state
     const [hover, setHover] = useState({
         mood_score: 5,
         self_talk: 5,
@@ -316,11 +318,18 @@ export const CheckInForm = () => {
                     setValue(copy);
                 }}
             />
-            <Button 
-                variant="contained" 
-                endIcon={<SendIcon />} 
-                onClick={()=> createCheckin(value).then(history.push('/'))}
+
+            <Stack direction="row" spacing={8}>
+                <Button
+                    variant="contained"
+                    endIcon={<SendIcon />}
+                    onClick={() => createCheckin(value).then(history.push('/'))}
                 >Send</Button>
+                <Button variant="outlined" onClick={() => history.push('/')}>
+                    Cancel
+                </Button>
+
+            </Stack>
         </Box>
     );
 }

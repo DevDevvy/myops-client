@@ -1,7 +1,16 @@
-import React, { useRef } from "react"
+import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
+import Stack from "@mui/material/Stack"
+import { Button, TextField } from "@material-ui/core"
+import InputAdornment from '@mui/material/InputAdornment';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import IconButton from '@mui/material/IconButton';
+import Input from '@mui/material/Input';
+import InputLabel from '@mui/material/InputLabel';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // TODO: This should get you started on registering a new user. 
 // Add new fields depending on your server side registration
 export const Register = () => {
@@ -11,9 +20,17 @@ export const Register = () => {
   const firstName = useRef()
   const lastName = useRef()
   const bio = useRef()
+  const [values, setValues] = useState({
+    password: '',
+    username: '',
+    first_name: '',
+    last_name: '',
+    bio: '',
+    showPassword: false,
+  });
+
   const handleRegister = (e) => {
     e.preventDefault()
-
     const newUser = {
       "username": username.current.value,
       "password": password.current.value,
@@ -21,7 +38,6 @@ export const Register = () => {
       "last_name": lastName.current.value,
       "bio": bio.current.value,
     }
-
     registerUser(newUser).then(res => {
       if ("token" in res) {
         localStorage.setItem("auth_token", res.token)
@@ -30,37 +46,63 @@ export const Register = () => {
     })
   }
 
+  const handleClickShowPassword = () => {
+    setValues({
+      ...values,
+      showPassword: !values.showPassword,
+    });
+  };
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
-    <main>
-      <form onSubmit={handleRegister}>
+    <main className="login-container">
+      <Stack component="form"
+        sx={{
+          '& .MuiTextField-root': { m: 1, width: '25ch' },
+          color: "white"
+          }} 
+        onSubmit={handleRegister}>
         <h3>Register an account</h3>
-        <fieldset>
-          <label htmlFor="inputUsername">Username</label>
-          <input ref={username} type="text" name="username" placeholder="Username" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="firstName"> First Name </label>
-          <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
-          <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="bio"> Bio </label>
-          <input ref={bio} type="text" name="bio" className="form-control" placeholder="Bio" required />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
-          <input ref={password} type="password" name="password" placeholder="Password" required />
-        </fieldset>
-        <fieldset>
-          <button type="submit">Register</button>
-        </fieldset>
-      </form>
-      <section>
-        Already registered? <Link to="/login">Login</Link>
-      </section>
+
+        <TextField
+          label="Username" type="username"
+          onChange={handleChange('username')}
+          id="username" required autoFocus
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <AccountCircle />
+              </InputAdornment>
+            ),
+          }}
+          variant="standard">
+        </TextField>
+        <TextField color="success" onChange={handleChange('first_name')} label="First Name" required />
+        <TextField onChange={handleChange('last_name')} label="Last Name" required />
+        <TextField onChange={handleChange('bio')} label="Bio" rows={6} multiline required />
+        <Input
+          type={values.showPassword ? 'text' : 'password'}
+          id="password" placeholder="Password" required
+          onChange={handleChange('password')}
+          endAdornment={
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+              >
+                {values.showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            </InputAdornment>
+          }
+        />
+          <Button type="submit">Register</Button>
+          Already registered? <Link to="/login">Login</Link>
+      </Stack>
     </main>
   )
 }
