@@ -19,3 +19,12 @@ export const createCheckin = (checkin) => {
         body: JSON.stringify(checkin)
     })
 }
+
+export const getCheckInsByDays = (number) => {
+    return fetch(`${Settings.API}/checkin?days=${number}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+        .then(response => response.json())
+}

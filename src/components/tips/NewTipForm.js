@@ -90,7 +90,7 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
                         {
                             moods.map(
                                 mood =>
-                                    <FormControlLabel value={mood.id} control={<Radio />} label={mood.mood} />
+                                    <FormControlLabel key={mood.id} value={mood.id} control={<Radio />} label={mood.mood} />
                             )
                         }
                     </RadioGroup>

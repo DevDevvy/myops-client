@@ -1,0 +1,49 @@
+.sign-in-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid white;
+    width: 25em;
+    padding: 1em;
+    padding-bottom: 2.5em;
+    background-color: rgba(94, 117, 142, 0.656);
+}
+
+#login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5em;
+}
+
+#form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .2em;
+    flex-direction: column;
+    
+}
+
+#sign-in-button{
+    margin: .6em;
+}
+
+#dialog-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    padding-top: 1.7em;
+}
+
+#close{
+    margin:.5em;
+    margin-top: 2em;
+}
+
+/* h3{
+    color: white;
+} */

@@ -81,3 +81,11 @@ export const unfavorite = (id) => {
     })
 }
 
+export const getTipsByMood = (id) => {
+    return fetch(`${Settings.API}/tips?mood=${id}`, {
+        headers:{
+            "Authorization": `Token ${localStorage.getItem("auth_token")}`
+        }
+    })
+        .then(response => response.json())
+}

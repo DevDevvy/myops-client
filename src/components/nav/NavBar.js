@@ -8,7 +8,7 @@ export const NavBar = () => {
   return (
     <nav>
       <div>
-        <ButtonGroup variant="text" aria-aria-label="text button group">
+        <ButtonGroup variant="text" >
           <Button><Link to="/" className="nav-buttons">Home</Link></Button>
           <Button><Link to="/tips" className="nav-buttons">Tips</Link></Button>
         </ButtonGroup>

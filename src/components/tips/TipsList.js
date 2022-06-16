@@ -9,23 +9,28 @@ import { UserContext } from "../../UserContext";
 import { pink } from '@mui/material/colors';
 import { IconButton } from "@mui/material";
 import { getCurrentUser } from "../user/UserManager";
+import { getMoods } from "../moods/MoodsManager"
+import { TipSearchBar } from "./TipSearchBar"
 
 
 export const TipList = () => {
 
     const { currentUser, setUser } = useContext(UserContext)
     const [tips, setTips] = useState([])
+    const [moods, setMoods] = useState([])
     const history = useHistory()
 
     useEffect(() => {
-        getTips().then(data => setTips(data))
+        getMoods()
+            .then(data=> setMoods(data))
+            .then(getTips)
+            .then(data => setTips(data))
     }, [])
-
-
 
     const userFavorites = currentUser.favoritedtips
     return (
         <article className="tips">
+            < TipSearchBar moods={moods} setTips={setTips}/>
             <h2>Tip List:</h2>
             {
                 tips.map(tip => {

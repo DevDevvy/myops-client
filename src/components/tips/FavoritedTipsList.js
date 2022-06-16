@@ -9,18 +9,18 @@ export const FavoritedTipsList = ({ favorites }) => {
 
         <div className="favorited-tips">
             <h2 className="authored-tips-title" >Favorite Tips</h2>
-            < Divider variant="middle"/>
+            < Divider variant="middle" />
             <ul>
                 {
                     favorites?.map(fave => {
-                        return <>
-                            <li className="tip-container"><Chip size="small"
+                        return <div key={`fave--${fave.id}`}>
+                            <li key={`fave--${fave.id}`} className="tip-container"><Chip size="small"
                                 color="primary"
                                 variant="outlined"
                                 label={fave.mood.mood}
                                 className="chip">
                             </Chip>{fave.tip}</li>
-                        </>
+                        </div>
                     })
                 }
             </ul>

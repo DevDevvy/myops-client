@@ -5,7 +5,7 @@ import { UserContext } from "../../UserContext";
 import { NewTipForm } from "../tips/NewTipForm";
 import "./Home.css"
 import { FavoritedTipsList } from "../tips/FavoritedTipsList";
-import  Button  from "@mui/material/Button"
+import Button from "@mui/material/Button"
 import { getMoods } from "../moods/MoodsManager";
 import { LineChart } from "../charts/LineChart.tsx";
 import { getCheckIns } from "../checkin/CheckInManager";
@@ -13,6 +13,8 @@ import { PieChart } from "../charts/PieChart.tsx";
 import Divider from '@mui/material/Divider';
 import { JournalList } from "../journal/JournalList";
 import { getUserJournals } from "./UserManager";
+import { CheckInSearchBar } from "../checkin/CheckInSearchBar";
+import { Alert } from "@mui/material";
 
 export const Home = () => {
     const { currentUser } = useContext(UserContext)
@@ -24,41 +26,54 @@ export const Home = () => {
 
     useEffect(() => {
         getCheckIns().then(data => setCheckins(data))
-        .then(getMoods).then(data => setMoods(data))
-        .then(getUserJournals).then(data=> setJournals(data))
+            .then(getMoods).then(data => setMoods(data))
+            .then(getUserJournals).then(data => setJournals(data))
     }, [])
 
     return (
         <main className="home">
             <h1 className="app-name">MyOps Personal Tracker</h1>
-            < Divider variant="middle"/>
+            < Divider variant="middle" />
             <h3 className="app-name">Take A Deep Breath...</h3>
-            
+            <div className="searchbar">
+                {/* drop down filter option for number of data points shown */}
+                <CheckInSearchBar id="checkin-dropdown"
+                    checkins={checkins}
+                    setCheckins={setCheckins} />
+            </div>
             <article className="charts-container">
-                <div  id="line-chart">
+                <div id="line-chart">
                     < LineChart checkins={checkins} />
                 </div>
                 <div id="pie-chart">
                     < PieChart checkins={checkins} />
                 </div>
             </article>
-            < Divider variant="middle"/>
+            {checkins.length < 1 ? <Alert severity="error" id="data-warning"> No data to show- start tracking your ops: <Link to='/checkin'>CHECK IN</Link></Alert> : ""}
+            < Divider variant="middle" />
             <div id="checkin">
-                <Button component={Link} 
-                    to="/checkin" 
-                    size="large" 
-                    color="success" 
-                    variant="contained" 
+                <Button component={Link}
+                    to="/checkin"
+                    size="large"
+                    color="success"
+                    variant="contained"
                     id="checkin">
-                        CHECK IN
+                    CHECK IN
                 </Button>
             </div>
             <div className="user-tips-list">
-                < JournalList journals={journals} setJournals={setJournals}/>
+                < JournalList journals={journals}
+                    setJournals={setJournals} />
                 < FavoritedTipsList favorites={favorites} />
                 <div className="user-tips">
-                    < NewTipForm setUserTips={setUserTips} currentUser={currentUser} moods={moods} setMoods={setMoods} />
-                    < UserTipList currentUser={currentUser} userTips={userTips} setUserTips={setUserTips} moods={moods} />
+                    < NewTipForm setUserTips={setUserTips}
+                        currentUser={currentUser}
+                        moods={moods}
+                        setMoods={setMoods} />
+                    < UserTipList currentUser={currentUser}
+                        userTips={userTips}
+                        setUserTips={setUserTips}
+                        moods={moods} />
                 </div>
             </div>
         </main>
