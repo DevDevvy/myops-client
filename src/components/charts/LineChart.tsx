@@ -10,6 +10,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { DateTimeConverter } from '../utils/DateTimeConverter';
 
 
 ChartJS.register(
@@ -65,8 +66,13 @@ export const options = {
 
 
 export const LineChart = ({ checkins }: CheckInProps) => {
-
-    const labels = checkins.map(checkin => checkin.date);
+    
+    const labels = checkins.map(checkin => {
+        const array = []
+        const date = DateTimeConverter(checkin)
+        array.push(date)
+        return array
+    });
     const data = {
         labels,
         datasets: [

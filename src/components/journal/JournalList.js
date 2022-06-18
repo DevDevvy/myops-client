@@ -12,14 +12,13 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import { deleteJournal } from "./JournalManager";
+import { DateTimeConverter } from "../utils/DateTimeConverter";
 
 export const JournalList = ({ journals, setJournals }) => {
     const history = useHistory()
     const [open, setOpen] = useState(false)
     const [selectedJournal, setSelectedJournal] = useState(0)
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
+
 
     const handleClose = () => {
         setOpen(false);
@@ -33,7 +32,9 @@ export const JournalList = ({ journals, setJournals }) => {
         <div className="journals-container">
         {
             journals.map(
+                
                 journal => {
+                    const date = DateTimeConverter(journal)
                     return <div key={journal.id} >
                         <IconButton onClick={() => {
                             setSelectedJournal(journal.id)
@@ -43,11 +44,7 @@ export const JournalList = ({ journals, setJournals }) => {
                             <DeleteForeverIcon />
                         </IconButton>
                         <IconButton onClick={() => {
-                            history.push({ 
-                                pathname: `/editjournal/${journal.id}`,
-                                // to be used with useLocation to change state
-                        })
-                            
+                            history.push(`/editjournal/${journal.id}`)
                         }}>
                             <EditIcon />
                         </IconButton>
@@ -57,7 +54,7 @@ export const JournalList = ({ journals, setJournals }) => {
                             label={journal.mood.mood}
                             className="chip">
                         </Chip>
-                        <Link to={`/journals/${journal.id}`}>{journal.title}</Link>--{journal.date}
+                        <Link to={`/journals/${journal.id}`}>{journal.title}</Link>--{date}
                     </div>
                 }
             ).reverse()

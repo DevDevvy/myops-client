@@ -9,8 +9,7 @@ import { IconButton } from "@mui/material";
 import "./UserTips.css"
 import { Divider } from "@material-ui/core";
 
-export const UserTipList = ({ userTips, setUserTips, moods }) => {
-    const [open, setOpen] = useState(false);
+export const UserTipList = ({ userTips, setUserTips }) => {
     const history = useHistory()
 
     useEffect(() => {
