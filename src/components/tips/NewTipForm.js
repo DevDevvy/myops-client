@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { createTip, getUserTips } from './TipsManager';
 import { FormControl } from '@mui/material';
 import { Zoom } from '@mui/material';

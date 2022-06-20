@@ -109,7 +109,6 @@ export const NewJournal = ({ editMode }) => {
                 '& .MuiTextField-root': { m: 1, width: '100%' },
             }}
             noValidate
-
             autoComplete="off">
             <div id="new-journal-entry">
                 <FormControl>

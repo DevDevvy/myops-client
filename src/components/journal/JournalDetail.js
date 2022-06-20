@@ -2,6 +2,8 @@ import { Chip, Divider } from "@mui/material"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
 import { getSingleJournal } from "./JournalManager"
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
 import "./Journal.css"
 
 export const JournalDetail = () => {
@@ -16,6 +18,8 @@ export const JournalDetail = () => {
 
     return <article className="journal-detail-container">
         < Divider variant="middle" />
+        <Box sx={{ width: '70%'}}>
+        <Card variant='outlined'>
         <div className="journal-detail-title">
             <Chip size="small"
                 color="primary"
@@ -29,5 +33,7 @@ export const JournalDetail = () => {
         <p className="journal-content">
             {journal.content}
         </p>
+        </Card>
+        </Box>
     </article>
 }

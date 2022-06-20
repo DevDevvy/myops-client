@@ -32,15 +32,24 @@ export const Home = () => {
 
     return (
         <main className="home">
-            <h1 className="app-name">MyOps Personal Tracker</h1>
+            {/* logo */}
+            <img src="/logo.svg" alt="MyOps App Logo" height={120} />
+            <h1 className="app-name">
+                Personal Tracker
+            </h1>
+
             < Divider variant="middle" />
-            <h3 className="app-name">Take A Deep Breath...</h3>
+
+            <h3 className="app-name">
+                Take A Deep Breath...
+            </h3>
             <div className="searchbar">
-                {/* drop down filter option for number of data points shown */}
+                {/* drop down search filters by length of time for chart views*/}
                 <CheckInSearchBar id="checkin-dropdown"
                     checkins={checkins}
                     setCheckins={setCheckins} />
             </div>
+            {/* charts in typescript are both fed same data */}
             <article className="charts-container">
                 <div id="line-chart">
                     < LineChart checkins={checkins} />
@@ -49,8 +58,17 @@ export const Home = () => {
                     < PieChart checkins={checkins} />
                 </div>
             </article>
-            {checkins.length < 1 ? <Alert severity="error" id="data-warning"> No data to show- start tracking your ops: <Link to='/checkin'>CHECK IN</Link></Alert> : ""}
+            {/* error message if no data is present */}
+            {
+                checkins.length < 1
+                    ? <Alert severity="error" id="data-warning"
+                    > No data to show- start tracking your ops:
+                        <Link to='/checkin'>CHECK IN</Link>
+                    </Alert>
+                    : ""
+            }
             < Divider variant="middle" />
+
             <div id="checkin">
                 <Button component={Link}
                     to="/checkin"
@@ -61,6 +79,7 @@ export const Home = () => {
                     CHECK IN
                 </Button>
             </div>
+            {/* contains homepage: authored tips, favorited tips, and personal journals */}
             <div className="user-tips-list">
                 < JournalList journals={journals}
                     setJournals={setJournals} />

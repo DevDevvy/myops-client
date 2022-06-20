@@ -11,6 +11,8 @@ import {
     Legend,
 } from 'chart.js';
 import { DateTimeConverter } from '../utils/DateTimeConverter';
+import { Link } from 'react-router-dom';
+
 
 
 ChartJS.register(
@@ -66,10 +68,12 @@ export const options = {
 
 
 export const LineChart = ({ checkins }: CheckInProps) => {
-    
+    // labels are for the date/time on bottom of chart
     const labels = checkins.map(checkin => {
+        // empty array to convert datetime fields into readable strings
         const array = []
         const date = DateTimeConverter(checkin)
+        
         array.push(date)
         return array
     });

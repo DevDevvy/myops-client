@@ -11,6 +11,9 @@ import Stack from '@mui/material/Stack';
 import SendIcon from '@mui/icons-material/Send';
 import { createCheckin } from './CheckInManager';
 import { useHistory } from 'react-router-dom';
+import { PropTypes } from '@material-ui/core';
+import { labels, marks } from './CheckinData';
+
 // styling for star rating
 const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
@@ -20,32 +23,6 @@ const StyledRating = styled(Rating)({
         color: '#ff3d47',
     },
 });
-
-// labels for star ratings
-const labels = {
-    1: 'Horrible',
-    2: 'Bad',
-    3: 'Poor',
-    4: 'Meh',
-    5: 'OK',
-    6: 'Good',
-    7: 'Very Good',
-    8: 'Excellent',
-    9: 'Amazing',
-    10: 'Perfect',
-};
-// labels for slider rating
-const marks = [
-    { value: 0, label: "0hrs" },
-    { value: 3, label: "3hrs" },
-    { value: 6, label: "6hrs" },
-    { value: 9, label: "9hrs" },
-    { value: 12, label: "12hrs" },
-    { value: 15, label: "15hrs" },
-    { value: 18, label: "18hrs" },
-    { value: 21, label: "21hrs" },
-
-]
 
 const getLabelText = (value) => {
     return `${value} Star${value !== 1 ? 's' : ''}, ${labels[value]}`;
@@ -80,7 +57,7 @@ export const CheckInForm = () => {
         learning_time: 0,
         exercise_time: 0
     });
-
+    
 
     return (
         <Box className='box-container'
@@ -90,7 +67,7 @@ export const CheckInForm = () => {
         >
 
             <Typography component="h2">
-                <h2>Take a deep breath and check-in</h2>
+                <h2 id="fade-text">Take a deep breath and check-in</h2>
             </Typography>
             <Typography component="h3">
                 <h3>Personal Ops Rating From 1-10

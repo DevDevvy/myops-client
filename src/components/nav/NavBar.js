@@ -12,6 +12,7 @@ export const NavBar = () => {
           <Button><Link to="/" className="nav-buttons">Home</Link></Button>
           <Button><Link to="/tips" className="nav-buttons">Tips</Link></Button>
         </ButtonGroup>
+        
       </div>
       <div>
         {

@@ -18,7 +18,6 @@ export const TipList = () => {
     const { currentUser, setUser } = useContext(UserContext)
     const [tips, setTips] = useState([])
     const [moods, setMoods] = useState([])
-    const history = useHistory()
 
     useEffect(() => {
         getMoods()
