@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { UserTipList } from "../tips/UserTips"
 import { UserContext } from "../../UserContext";
 import { NewTipForm } from "../tips/NewTipForm";
@@ -33,22 +33,18 @@ export const Home = () => {
     return (
         <main className="home">
             {/* logo */}
-            <img src="/logo.svg" alt="MyOps App Logo" height={120} />
-            <h1 className="app-name">
-                Personal Tracker
-            </h1>
-
+            <img id="home-logo" src="/logo.svg" alt="MyOps App Logo" height={120} />
+            <h1 className="app-name">Personal Tracker</h1>
             < Divider variant="middle" />
+            <h3 className="app-name">Take A Deep Breath...</h3>
 
-            <h3 className="app-name">
-                Take A Deep Breath...
-            </h3>
             <div className="searchbar">
                 {/* drop down search filters by length of time for chart views*/}
                 <CheckInSearchBar id="checkin-dropdown"
                     checkins={checkins}
                     setCheckins={setCheckins} />
             </div>
+
             {/* charts in typescript are both fed same data */}
             <article className="charts-container">
                 <div id="line-chart">
@@ -58,6 +54,7 @@ export const Home = () => {
                     < PieChart checkins={checkins} />
                 </div>
             </article>
+
             {/* error message if no data is present */}
             {
                 checkins.length < 1
@@ -95,6 +92,7 @@ export const Home = () => {
                         moods={moods} />
                 </div>
             </div>
+            <p id="disclaimer">DISCLAIMER: MyOps is not a replacement for any kind of professional, clinical, or medical help and is only meant for personal reference.</p>
         </main>
     )
 }

@@ -35,11 +35,11 @@ export const TipList = () => {
                 tips.map(tip => {
                     const fave = userFavorites?.find(fave => fave.id === tip.id)
                     return <article key={`tip--${tip.id}`} className="tip">
-                        { tip.public ? 
+                        {tip.public ?
                             <Stack direction="column">
                                 <div className="tip-container">
                                     {
-                                        fave ?
+                                        fave ? 
                                             <IconButton onClick={() =>
                                                 unfavorite(tip.id)
                                                     .then(getCurrentUser)
@@ -71,7 +71,6 @@ export const TipList = () => {
                     </article>
                 })
             }
-
         </article>
     )
 }

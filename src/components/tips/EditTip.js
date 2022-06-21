@@ -9,11 +9,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import { getMoods } from '../moods/MoodsManager';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { forwardRef, useEffect, useState } from 'react';
-import { createTip, editTip, getSingleTip, getUserTips } from './TipsManager';
+import { editTip, getSingleTip } from './TipsManager';
 import { FormControl } from '@mui/material';
 import { Zoom } from '@mui/material';
 import { useParams, useHistory } from 'react-router-dom';
-import Typeography from '@mui/material/Typography'
 const Transition = forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
 });
@@ -23,7 +22,6 @@ export const EditTip = () => {
     const [moods, setMoods] = useState([])
     const [originalMood, setOriginalMood] = useState(0)
     const [open, setOpen] = useState(true)
-    const [shownMood, setShownMood] = useState()
     const {tipId} = useParams()
     const history = useHistory()
     
@@ -34,9 +32,6 @@ export const EditTip = () => {
                 .then(getMoods)
                 .then(data=> setMoods(data))
     }, [])
-
-
-
 
     const handleClose = () => {
         history.push('/')
@@ -56,12 +51,12 @@ export const EditTip = () => {
                 onClose={handleClose}
                 TransitionComponent={Transition}>
                 <DialogContent>
-                    <Typeography component="h3"><h3>Edit Tip:</h3></Typeography>
+                    <h3>Edit Tip:</h3>
                     <FormControl fullWidth sx={{ m: 1 }}>
                         <TextField
                             autoFocus
                             margin="dense"
-                            id={tip.id}
+                            id={tip.tip}
                             value={tip.tip}
                             type="text"
                             fullWidth
@@ -69,7 +64,7 @@ export const EditTip = () => {
                             onChange={tipHandler}
                         />
                     </FormControl>
-                    <p><h4>This tip is for when you are:</h4></p>
+                    <h4>This tip is for when you are:</h4>
                     
                     <RadioGroup
                         aria-labelledby="demo-radio-buttons-group-label"

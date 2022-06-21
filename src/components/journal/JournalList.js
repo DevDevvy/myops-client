@@ -32,15 +32,13 @@ export const JournalList = ({ journals, setJournals }) => {
         <div className="journals-container">
         {
             journals.map(
-                
                 journal => {
                     const date = DateTimeConverter(journal)
                     return <div key={journal.id} >
                         <IconButton onClick={() => {
                             setSelectedJournal(journal.id)
                             setOpen(true)
-                        }
-                        }>
+                        }}>
                             <DeleteForeverIcon />
                         </IconButton>
                         <IconButton onClick={() => {

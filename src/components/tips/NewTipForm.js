@@ -25,8 +25,6 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
         public: false
     })
 
-
-
     const updateTipsList = () => {
         getUserTips(currentUser.user_id).then(data => setUserTips(data))
     }

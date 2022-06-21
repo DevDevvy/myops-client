@@ -4,13 +4,12 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels'
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.defaults.color = "#fff";
 ChartJS.register(ChartDataLabels);
 ChartJS.defaults.set('plugins.datalabels', {
     color: '#FFFFFF'
-  });
+});
 
 const Home: FC<CheckInProps> = (props): JSX.Element => {
     <>
@@ -21,6 +20,7 @@ const Home: FC<CheckInProps> = (props): JSX.Element => {
 interface CheckInProps {
     checkins: array,
 }
+
 export const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -41,10 +41,6 @@ export const options = {
     },
     
 };
-
-
-
-
 
 export const PieChart = ({ checkins }: CheckInProps) => {
     if (checkins.length > 1) {
@@ -96,7 +92,7 @@ export const PieChart = ({ checkins }: CheckInProps) => {
                     borderWidth: 1,
                     datalabels: {
                         anchor: 'end'
-                      }
+                    }
                 },
             ],
         };

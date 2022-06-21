@@ -1,8 +1,15 @@
 .box-container{
-    padding: 3em;
+    padding: 1em;
     margin: 1em;
 }
 
-#fade-text{
-    
+.divider{
+    margin: 1em;
+}
+
+#checkin-greeting{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }

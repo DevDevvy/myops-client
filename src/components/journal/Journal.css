@@ -22,7 +22,12 @@
     flex-direction: column;
     align-items: center;
 }
+#back-button{
+    display: flex;
+    justify-content: center;
+    margin: 1em;
 
+}
 #new-journal-entry{
     display: flex;
     flex-direction: column;

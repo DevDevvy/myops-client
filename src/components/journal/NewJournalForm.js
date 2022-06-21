@@ -12,8 +12,9 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { createJournalEntry, editJournalEntry, getSingleJournal } from "./JournalManager";
-import { useLocation } from "react-router-dom";
 
+
+// NewJournalForm is used for new journal and edit journal views depending on props
 export const NewJournal = ({ editMode }) => {
     const history = useHistory()
     const { journalId } = useParams()
@@ -43,7 +44,6 @@ export const NewJournal = ({ editMode }) => {
     }
 
     const handleChange = (event) => {
-        // if (!editMode) {
         if (event.target.id === "title") {
             if (!editMode) {
                 const copy = { ...form }
@@ -67,10 +67,10 @@ export const NewJournal = ({ editMode }) => {
         }
     }
 
-
         const handleMoodChange = (event) => {
             setSelectedMood(event.target.value)
         }
+
         const handleSend = () => {
             if (!editMode) {
                 const newJournal = {
@@ -100,7 +100,6 @@ export const NewJournal = ({ editMode }) => {
             }
         });
         const classes = useStyles();
-
 
         return <Box
             className="new-journal-container"
@@ -137,12 +136,11 @@ export const NewJournal = ({ editMode }) => {
                         id="moods"
                         name="moods"
                         onClick={handleMoodChange}
-                        value={selectedMood}
-                    >
+                        value={selectedMood} >
                         {
                             moods.map(
                                 mood =>
-                                    <FormControlLabel value={mood.id} control={<Radio />} label={mood.mood} />
+                                    <FormControlLabel key={`mood--${mood.id}`}value={mood.id} control={<Radio />} label={mood.mood} />
                             )
                         }
                     </RadioGroup>
