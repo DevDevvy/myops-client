@@ -12,7 +12,7 @@ export const UserTipList = ({ userTips, setUserTips, currentUser }) => {
     const history = useHistory()
 
     useEffect(() => {
-        getUserTips(currentUser.id).then(data => setUserTips(data))
+        getUserTips(currentUser.user_id).then(data => setUserTips(data))
     }, [])
 
     return (
