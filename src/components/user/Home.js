@@ -36,7 +36,7 @@ export const Home = () => {
             <img id="home-logo" src="/logo.svg" alt="MyOps App Logo" height={120} />
             <h1 className="app-name">Personal Tracker</h1>
             < Divider variant="middle" />
-            <h3 className="app-name">Take A Deep Breath...</h3>
+            <h3 className="app-name">Welcome {currentUser.first_name}, take a breath and check in with yourself...</h3>
 
             <div className="searchbar">
                 {/* drop down search filters by length of time for chart views*/}
