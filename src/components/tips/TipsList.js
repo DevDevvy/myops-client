@@ -32,7 +32,7 @@ export const TipList = () => {
             < TipSearchBar moods={moods} setTips={setTips} />
             <h2>Tip List:</h2>
             {
-                tips.map(tip => {
+                tips?.map(tip => {
                     const fave = userFavorites?.find(fave => fave.id === tip.id)
                     return <article key={`tip--${tip.id}`} className="tip">
                         {tip.public ?
