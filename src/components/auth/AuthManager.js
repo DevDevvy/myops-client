@@ -12,7 +12,7 @@ export const registerUser = (user) => {
 }
 
 export const loginUser = (user) => {
-  return fetch(`${Settings.API/login}`, {
+  return fetch(`${Settings.API}/login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
