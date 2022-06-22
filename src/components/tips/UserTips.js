@@ -13,7 +13,7 @@ export const UserTipList = ({ userTips, setUserTips, currentUser }) => {
 
     useEffect(() => {
         getUserTips(currentUser.user_id).then(data => setUserTips(data))
-    }, [])
+    }, [currentUser])
 
     return (
         <article className="tips">
