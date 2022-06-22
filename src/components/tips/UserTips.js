@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
-import Button from '@mui/material/Button';
+import React, { useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import Chip from '@mui/material/Chip'
 import { deleteTip, getUserTips } from "./TipsManager";
 import EditIcon from '@mui/icons-material/Edit';
@@ -9,11 +8,11 @@ import { IconButton } from "@mui/material";
 import "./UserTips.css"
 import { Divider } from "@material-ui/core";
 
-export const UserTipList = ({ userTips, setUserTips }) => {
+export const UserTipList = ({ userTips, setUserTips, currentUser }) => {
     const history = useHistory()
 
     useEffect(() => {
-        getUserTips().then(data => setUserTips(data))
+        getUserTips(currentUser.id).then(data => setUserTips(data))
     }, [])
 
     return (
