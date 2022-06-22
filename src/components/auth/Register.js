@@ -32,11 +32,11 @@ export const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault()
     const newUser = {
-      "username": username.current.value,
-      "password": password.current.value,
-      "first_name": firstName.current.value,
-      "last_name": lastName.current.value,
-      "bio": bio.current.value,
+      "username": values.username,
+      "password": values.password,
+      "first_name": values.firstName,
+      "last_name": values.lastName,
+      "bio": values.bio,
     }
     registerUser(newUser).then(res => {
       if ("token" in res) {
