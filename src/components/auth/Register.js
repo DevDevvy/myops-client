@@ -34,8 +34,8 @@ export const Register = () => {
     const newUser = {
       "username": values.username,
       "password": values.password,
-      "first_name": values.firstName,
-      "last_name": values.lastName,
+      "first_name": values.first_name,
+      "last_name": values.last_name,
       "bio": values.bio,
     }
     registerUser(newUser).then(res => {
