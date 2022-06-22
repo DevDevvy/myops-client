@@ -20,10 +20,6 @@
     "react-scripts": "^5.0.1",
     "web-vitals": "^1.1.2"
   },
-
-  "engines": {
-    "node": "^16.13.1"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
