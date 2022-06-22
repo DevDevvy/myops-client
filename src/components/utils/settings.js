@@ -1,4 +1,4 @@
 export const Settings = {
-    API: "http://localhost:8000",
+    API: "https://myops-app.herokuapp.com/",
     
 }
