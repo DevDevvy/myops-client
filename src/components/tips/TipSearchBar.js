@@ -5,13 +5,13 @@ import Select from '@mui/material/Select';
 import { useState } from 'react';
 import { getTipsByMood } from './TipsManager';
 
-export const TipSearchBar = ({moods, setTips}) => {
+export const TipSearchBar = ({ moods, setTips }) => {
     const [moodSearch, setMoodSearch] = useState('');
 
     const handleChange = (event) => {
         // setMoodSearch(event.target.value);
         getTipsByMood(event.target.value)
-        .then(data=> setTips(data))
+            .then(data => setTips(data))
     };
 
     return (
@@ -33,7 +33,6 @@ export const TipSearchBar = ({moods, setTips}) => {
                             return <MenuItem value={mood.id}>{mood.mood}</MenuItem>
                         })
                     }
-                    
                 </Select>
             </FormControl>
         </div>

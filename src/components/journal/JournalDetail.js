@@ -11,11 +11,11 @@ export const JournalDetail = () => {
     const [journal, setJournal] = useState({})
     const { journalId } = useParams()
     const history = useHistory()
+    
     useEffect(() => {
         getSingleJournal(journalId)
             .then(data => setJournal(data))
     }, [])
-
 
     return <article className="journal-detail-container">
         < Divider variant="middle" />

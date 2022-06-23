@@ -1,12 +1,12 @@
+import Chip from '@mui/material/Chip'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { deleteTip, getUserTips } from "./TipsManager";
+import { Divider } from "@material-ui/core";
+import EditIcon from '@mui/icons-material/Edit';
+import { IconButton } from "@mui/material";
 import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import Chip from '@mui/material/Chip'
-import { deleteTip, getUserTips } from "./TipsManager";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { IconButton } from "@mui/material";
 import "./UserTips.css"
-import { Divider } from "@material-ui/core";
 
 export const UserTipList = ({ userTips, setUserTips, currentUser }) => {
     const history = useHistory()

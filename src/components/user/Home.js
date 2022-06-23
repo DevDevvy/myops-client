@@ -1,20 +1,20 @@
+import { Alert } from "@mui/material";
+import Button from "@mui/material/Button"
+import { CheckInSearchBar } from "../checkin/CheckInSearchBar";
+import Divider from '@mui/material/Divider';
 import React, { useContext, useEffect, useState } from "react"
+import { FavoritedTipsList } from "../tips/FavoritedTipsList";
+import { getCheckIns } from "../checkin/CheckInManager";
+import { getUserJournals } from "./UserManager";
+import { getMoods } from "../moods/MoodsManager";
+import { JournalList } from "../journal/JournalList";
+import { LineChart } from "../charts/LineChart.tsx";
 import { Link } from "react-router-dom"
+import { NewTipForm } from "../tips/NewTipForm";
+import { PieChart } from "../charts/PieChart.tsx";
 import { UserTipList } from "../tips/UserTips"
 import { UserContext } from "../../UserContext";
-import { NewTipForm } from "../tips/NewTipForm";
 import "./Home.css"
-import { FavoritedTipsList } from "../tips/FavoritedTipsList";
-import Button from "@mui/material/Button"
-import { getMoods } from "../moods/MoodsManager";
-import { LineChart } from "../charts/LineChart.tsx";
-import { getCheckIns } from "../checkin/CheckInManager";
-import { PieChart } from "../charts/PieChart.tsx";
-import Divider from '@mui/material/Divider';
-import { JournalList } from "../journal/JournalList";
-import { getUserJournals } from "./UserManager";
-import { CheckInSearchBar } from "../checkin/CheckInSearchBar";
-import { Alert } from "@mui/material";
 
 export const Home = () => {
     const { currentUser } = useContext(UserContext)
