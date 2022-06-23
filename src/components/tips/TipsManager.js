@@ -1,6 +1,6 @@
 import { Settings } from "../utils/settings"
 
-
+// gets all public tips
 export const getTips = () => {
     return fetch(`${Settings.API}/tips`, {
         headers:{
@@ -9,6 +9,7 @@ export const getTips = () => {
     })
         .then(response => response.json())
 }
+// gets all tips specific to user
 export const getUserTips = (id) => {
     return fetch(`${Settings.API}/tips?user_id=${id}`, {
         headers:{
@@ -81,6 +82,7 @@ export const unfavorite = (id) => {
     })
 }
 
+// gets all tips associated with a certain mood
 export const getTipsByMood = (id) => {
     return fetch(`${Settings.API}/tips?mood=${id}`, {
         headers:{

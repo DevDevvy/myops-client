@@ -13,36 +13,38 @@ import { FormControl } from '@mui/material';
 import { Zoom } from '@mui/material';
 import Switch from '@mui/material/Switch';
 
+// dialog animation
 const Transition = forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
 });
 
+
 export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
     const [open, setOpen] = useState(false);
+    // set up initial tip state with public as false
     const [tip, setTip] = useState({
         tip: "",
         mood: 1,
         public: false
     })
-
+    // function updates state after sending
     const updateTipsList = () => {
         getUserTips(currentUser.user_id).then(data => setUserTips(data))
     }
+    // open/close handlers for dialog
     const handleClickOpen = () => {
         setOpen(true);
     };
-
     const handleClose = () => {
         setOpen(false);
         clearTip()
     };
-
+    // state handlers
     const handleChange = (e) => {
         const copy = { ...tip }
         copy.public = !copy.public
         setTip(copy)
     };
-
     const tipHandler = (e) => {
         const copy = { ...tip }
         copy.tip = e.target.value
@@ -53,7 +55,7 @@ export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
         copy.mood = e.target.value
         setTip(copy)
     }
-
+// clear tip after send
     const clearTip = () => {
         const tip = {
             tip: "",

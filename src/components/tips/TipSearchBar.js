@@ -9,7 +9,6 @@ export const TipSearchBar = ({ moods, setTips }) => {
     const [moodSearch, setMoodSearch] = useState('');
 
     const handleChange = (event) => {
-        // setMoodSearch(event.target.value);
         getTipsByMood(event.target.value)
             .then(data => setTips(data))
     };
