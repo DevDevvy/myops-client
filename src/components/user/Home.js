@@ -15,6 +15,7 @@ import { PieChart } from "../charts/PieChart.tsx";
 import { UserTipList } from "../tips/UserTips"
 import { UserContext } from "../../UserContext";
 import "./Home.css"
+import { getUserTips } from "../tips/TipsManager";
 
 export const Home = () => {
     const { currentUser } = useContext(UserContext)
@@ -26,6 +27,7 @@ export const Home = () => {
 
     useEffect(() => {
         getCheckIns().then(data => setCheckins(data))
+            .then(getUserTips).then(data => setUserTips(data))
             .then(getMoods).then(data => setMoods(data))
             .then(getUserJournals).then(data => setJournals(data))
     }, [])

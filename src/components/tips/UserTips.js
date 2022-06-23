@@ -4,16 +4,12 @@ import { deleteTip, getUserTips } from "./TipsManager";
 import { Divider } from "@material-ui/core";
 import EditIcon from '@mui/icons-material/Edit';
 import { IconButton } from "@mui/material";
-import React, { useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import "./UserTips.css"
 
-export const UserTipList = ({ userTips, setUserTips, currentUser }) => {
+export const UserTipList = ({ userTips, setUserTips }) => {
     const history = useHistory()
 
-    useEffect(() => {
-        getUserTips(currentUser.id).then(data => setUserTips(data))
-    }, [currentUser])
 
     return (
         <article className="tips">
