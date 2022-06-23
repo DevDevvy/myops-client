@@ -1,16 +1,15 @@
-import { Button } from "@mui/material"
-import TextField from "@mui/material/TextField"
-import FormControl from "@mui/material/FormControl"
-import React, { useRef, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
 import "./Auth.css"
-import { loginUser } from "./AuthManager"
-import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Box from '@mui/material/Box';
+import { Button } from "@mui/material"
+import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
+import { loginUser } from "./AuthManager"
+import { Link, useHistory } from "react-router-dom"
+import React, { useRef, useState } from "react"
+import TextField from "@mui/material/TextField"
 import Visibility from '@mui/icons-material/Visibility';
-import Box from '@mui/material/Box';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export const Login = () => {

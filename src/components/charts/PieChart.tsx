@@ -43,7 +43,7 @@ export const options = {
 };
 
 export const PieChart = ({ checkins }: CheckInProps) => {
-    if (checkins.length > 1) {
+    if (checkins.length > 0) {
         // create array of times for each category
         const personal = checkins?.map(checkin => checkin.personal_time)
         const breaks = checkins?.map(checkin => checkin.break_time)
