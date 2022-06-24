@@ -19,7 +19,7 @@ const Transition = forwardRef(function Transition(props, ref) {
 });
 
 
-export const NewTipForm = ({ currentUser, setUserTips, moods, setMoods }) => {
+export const NewTipForm = ({ currentUser, setUserTips, moods }) => {
     const [open, setOpen] = useState(false);
     // set up initial tip state with public as false
     const [tip, setTip] = useState({

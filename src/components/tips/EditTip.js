@@ -4,15 +4,16 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
+import { editTip, getSingleTip } from './TipsManager';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { FormControl } from '@mui/material';
+import { forwardRef, useEffect, useState } from 'react';
+import { getMoods } from '../moods/MoodsManager';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-import { getMoods } from '../moods/MoodsManager';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { forwardRef, useEffect, useState } from 'react';
-import { editTip, getSingleTip } from './TipsManager';
-import { FormControl } from '@mui/material';
-import { Zoom } from '@mui/material';
+import Switch from '@mui/material/Switch';
 import { useParams, useHistory } from 'react-router-dom';
+import { Zoom } from '@mui/material';
 const Transition = forwardRef(function Transition(props, ref) {
     return <Zoom ref={ref} {...props} />;
 });
@@ -43,6 +44,18 @@ export const EditTip = () => {
         setTip(copy)
     }
 
+    const moodHandler = (e) => {
+        setOriginalMood(e.target.value)
+        const copy = {...tip}
+        copy.mood = e.target.value
+        setTip(copy)
+    }
+
+    const handleChange = (e) => {
+        const copy = { ...tip }
+        copy.public = !copy.public
+        setTip(copy)
+    };
 
     return (
         <div className='authored-tips-container'>
@@ -71,7 +84,7 @@ export const EditTip = () => {
                         id={tip.mood_id}
                         name="radio-buttons-group"
                         value={originalMood}
-                        onChange={e => setOriginalMood(e.target.value)}
+                        onChange={moodHandler}
                     >
                         {
                             moods.map(
@@ -80,6 +93,12 @@ export const EditTip = () => {
                             )
                         }
                     </RadioGroup>
+                    <FormControlLabel control={<Switch
+                        checked={tip.public}
+                        onChange={handleChange}
+                        inputProps={{ 'aria-label': 'controlled' }} />} 
+                        label="Make Public"
+                    />
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>
@@ -88,7 +107,8 @@ export const EditTip = () => {
                             const newTip = {
                                 id: tip.id,
                                 tip: tip.tip,
-                                mood: parseInt(originalMood)
+                                mood: parseInt(originalMood),
+                                public: tip.public
                             }
                             editTip(newTip)
                             .then(handleClose)}
