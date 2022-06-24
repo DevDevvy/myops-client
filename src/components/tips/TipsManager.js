@@ -59,7 +59,6 @@ export const deleteTip = (tipId) => {
             "Content-Type": "application/json"
         }
     })
-        .then(getTips)
 }
 
 export const favorite = (id) => {
