@@ -51,7 +51,7 @@ export const editTip = (tip) => {
 }
 
 
-export const deleteTip = (tipId) => {
+export const deleteTip = (tipId, userId) => {
     return fetch(`${Settings.API}/tips/${tipId}`, { 
         method: "DELETE",
         headers: {
@@ -59,7 +59,6 @@ export const deleteTip = (tipId) => {
             "Content-Type": "application/json"
         }
     })
-        .then(getTips)
 }
 
 export const favorite = (id) => {
