@@ -27,7 +27,7 @@ export const Home = () => {
 
     useEffect(() => {
         getCheckIns().then(data => setCheckins(data))
-            .then(getUserTips).then(data => setUserTips(data))
+            .then(getUserTips(currentUser.id)).then(data => setUserTips(data))
             .then(getMoods).then(data => setMoods(data))
             .then(getUserJournals).then(data => setJournals(data))
     }, [])
