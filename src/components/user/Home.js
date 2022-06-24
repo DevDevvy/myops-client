@@ -26,12 +26,15 @@ export const Home = () => {
     const [journals, setJournals] = useState([])
 
     useEffect(() => {
-        
-        getCheckIns().then(data => setCheckins(data))
-        .then(getMoods).then(data => setMoods(data))
-        .then(getUserTips(currentUser.id)).then(data => setUserTips(data))
+        getCheckIns()
+            .then(data => setCheckins(data))
+            .then(getMoods).then(data => setMoods(data))
             .then(getUserJournals).then(data => setJournals(data))
     }, [])
+
+    useEffect(() => {
+        getUserTips(currentUser.id).then(data => setUserTips(data))
+    }, [currentUser])
 
     return (
         <main className="home">
