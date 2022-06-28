@@ -29,7 +29,7 @@ export const TipSearchBar = ({ moods, setTips }) => {
                     </MenuItem>
                     {
                         moods?.map(mood => {
-                            return <MenuItem value={mood.id}>{mood.mood}</MenuItem>
+                            return <MenuItem key={`mood-${mood.id}`}value={mood.id}>{mood.mood}</MenuItem>
                         })
                     }
                 </Select>
