@@ -20,23 +20,16 @@ export const Register = () => {
   const firstName = useRef()
   const lastName = useRef()
   const bio = useRef()
-  const [values, setValues] = useState({
-    password: '',
-    username: '',
-    first_name: '',
-    last_name: '',
-    bio: '',
-    showPassword: false,
-  });
+  
 
   const handleRegister = (e) => {
     e.preventDefault()
     const newUser = {
-      "username": values.username,
-      "password": values.password,
-      "first_name": values.first_name,
-      "last_name": values.last_name,
-      "bio": values.bio,
+      "username": username.current.value,
+      "password": password.current.value,
+      "first_name": firstName.current.value,
+      "last_name": lastName.current.value,
+      "bio": bio.current.value,
     }
     registerUser(newUser).then(res => {
       if ("token" in res) {
@@ -59,50 +52,36 @@ export const Register = () => {
     event.preventDefault();
   };
   return (
-    <Box component="form" className="login-container" onSubmit={handleRegister}>
-      <Stack 
-        sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-          color: "white"
-          }} 
-        >
-        <h3>Register an account</h3>
-
-        <TextField
-          label="Username" type="username"
-          onChange={handleChange('username')}
-          id="username" required autoFocus
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <AccountCircle />
-              </InputAdornment>
-            ),
-          }}
-          variant="standard">
-        </TextField>
-        <TextField color="success" onChange={handleChange('first_name')} label="First Name" required />
-        <TextField onChange={handleChange('last_name')} label="Last Name" required />
-        <TextField onChange={handleChange('bio')} label="Bio" rows={6} multiline required />
-        <Input
-          type={values.showPassword ? 'text' : 'password'}
-          id="password" placeholder="Password" required
-          onChange={handleChange('password')}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={handleClickShowPassword}
-                onMouseDown={handleMouseDownPassword}
-              >
-                {values.showPassword ? <VisibilityOff /> : <Visibility />}
-              </IconButton>
-            </InputAdornment>
-          }
-        />
-          <Button type="submit">Register</Button>
-          Already registered? <Link to="/login">Login</Link>
-      </Stack>
-    </Box>
+    <main>
+    <form onSubmit={handleRegister}>
+      <h3>Register an account</h3>
+      <fieldset>
+        <label htmlFor="inputUsername">Username</label>
+        <input ref={username} type="text" name="username" placeholder="Username" required />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="inputPassword"> Password </label>
+        <input ref={password} type="password" name="password" placeholder="Password" required />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="inputFirstName"> First Name </label>
+        <input ref={firstName} type="text" name="firstName" placeholder="First Name" required />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="inputLastName"> Last Name </label>
+        <input ref={lastName} type="text" name="lastName" placeholder="Last Name" required />
+      </fieldset>
+      <fieldset>
+        <label htmlFor="inputLastName"> Quick Bio </label>
+        <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
+      </fieldset>
+      <fieldset>
+        <button type="submit">Register</button>
+      </fieldset>
+    </form>
+    <section>
+      Already registered? <Link to="/login">Login</Link>
+    </section>
+  </main>
   )
 }
