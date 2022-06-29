@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
 import Stack from "@mui/material/Stack"
-import { Button, TextField } from "@material-ui/core"
+import { Box, Button, TextField } from "@material-ui/core"
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import IconButton from '@mui/material/IconButton';
@@ -59,13 +59,13 @@ export const Register = () => {
     event.preventDefault();
   };
   return (
-    <main className="login-container">
-      <Stack component="form"
+    <Box component="form" className="login-container" onSubmit={handleRegister}>
+      <Stack 
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
           color: "white"
           }} 
-        onSubmit={handleRegister}>
+        >
         <h3>Register an account</h3>
 
         <TextField
@@ -103,6 +103,6 @@ export const Register = () => {
           <Button type="submit">Register</Button>
           Already registered? <Link to="/login">Login</Link>
       </Stack>
-    </main>
+    </Box>
   )
 }
