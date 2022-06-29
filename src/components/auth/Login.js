@@ -20,13 +20,13 @@ export const Login = () => {
     username: '',
     showPassword: false,
   });
+  
   const handleLogin = (e) => {
     e.preventDefault()
     const user = {
       username: values.username,
       password: values.password
     }
-
     loginUser(user)
       .then(res => {
         if ("valid" in res && res.valid && "token" in res) {
@@ -38,6 +38,7 @@ export const Login = () => {
         }
       })
   }
+
   const handleClickShowPassword = () => {
     setValues({
       ...values,
