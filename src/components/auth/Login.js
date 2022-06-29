@@ -13,20 +13,18 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 export const Login = () => {
+  const username = useRef()
+  const password = useRef()
   const invalidDialog = useRef()
   const history = useHistory()
-  const [values, setValues] = useState({
-    password: '',
-    username: '',
-    showPassword: false,
-  });
 
   const handleLogin = (e) => {
     e.preventDefault()
     const user = {
-      username: values.username,
-      password: values.password
+      username: username.current.value,
+      password: password.current.value
     }
+
     loginUser(user)
       .then(res => {
         if ("valid" in res && res.valid && "token" in res) {
@@ -39,65 +37,30 @@ export const Login = () => {
       })
   }
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
   return (
     <main >
-      <dialog ref={invalidDialog} >
-          <div>Username or password was not valid.</div>
-          <button id="close" size="small" variant="outlined" onClick={e => invalidDialog.current.close()}>Close</button>
+      <dialog ref={invalidDialog}>
+        <div>Username or password was not valid.</div>
+        <button onClick={e => invalidDialog.current.close()}>Close</button>
       </dialog>
-      <div className="login-container">
-        <Box component="form" onSubmit={handleLogin} sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
-        }} className="sign-in-container">
-          <h3>MyOps Sign In</h3>
-          <TextField
-            label="Username" type="username"
-            onChange={handleChange('username')}
-            id="username" required autoFocus
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <AccountCircle />
-                </InputAdornment>
-              ),
-            }}
-            variant="standard">
-          </TextField>
-          <Input
-            type={values.showPassword ? 'text' : 'password'}
-            id="password" placeholder="Password" required
-            onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-          <Button onClick={()=>handleLogin} variant="contained" type="submit" id="sign-in-button">Sign In</Button>
-
-          <section>
-            <Link to="/register">Not a member yet?</Link>
-          </section>
-        </Box>
-      </div>
+      <section>
+        <form onSubmit={handleLogin}>
+          <fieldset>
+            <label htmlFor="inputUsername"> Username</label>
+            <input ref={username} type="username" id="username" placeholder="Username address" required autoFocus />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="inputPassword"> Password </label>
+            <input ref={password} type="password" id="password" placeholder="Password" required />
+          </fieldset>
+          <fieldset>
+            <button type="submit">Sign In</button>
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <Link to="/register">Not a member yet?</Link>
+      </section>
     </main>
   )
 }
