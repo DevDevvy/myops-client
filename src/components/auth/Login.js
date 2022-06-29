@@ -20,7 +20,7 @@ export const Login = () => {
     username: '',
     showPassword: false,
   });
-  
+
   const handleLogin = (e) => {
     e.preventDefault()
     const user = {
@@ -54,10 +54,8 @@ export const Login = () => {
   return (
     <main >
       <dialog ref={invalidDialog} >
-        <div id="dialog-container">
           <div>Username or password was not valid.</div>
-          <Button id="close" size="small" variant="outlined" onClick={e => invalidDialog.current.close()}>Close</Button>
-        </div>
+          <button id="close" size="small" variant="outlined" onClick={e => invalidDialog.current.close()}>Close</button>
       </dialog>
       <div className="login-container">
         <Box component="form" onSubmit={handleLogin} sx={{
