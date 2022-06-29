@@ -3,12 +3,11 @@ import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
 import Stack from "@mui/material/Stack"
-import { Button, TextField } from "@material-ui/core"
+import { Box, Button, TextField } from "@material-ui/core"
 import InputAdornment from '@mui/material/InputAdornment';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import IconButton from '@mui/material/IconButton';
 import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // TODO: This should get you started on registering a new user. 
@@ -59,13 +58,13 @@ export const Register = () => {
     event.preventDefault();
   };
   return (
-    <main className="login-container">
-      <Stack component="form"
+    <Box className="login-container" component="form" onSubmit={handleRegister}>
+      <Stack 
         sx={{
           '& .MuiTextField-root': { m: 1, width: '25ch' },
           color: "white"
           }} 
-        onSubmit={handleRegister}>
+        >
         <h3>Register an account</h3>
 
         <TextField
@@ -81,9 +80,9 @@ export const Register = () => {
           }}
           variant="standard">
         </TextField>
-        <TextField color="success" onChange={handleChange('first_name')} label="First Name" required />
+        <TextField color="primary" onChange={handleChange('first_name')} label="First Name" required />
         <TextField onChange={handleChange('last_name')} label="Last Name" required />
-        <TextField onChange={handleChange('bio')} label="Bio" rows={6} multiline required />
+        <TextField onChange={handleChange('bio')} label="Bio" minRows={6} multiline required />
         <Input
           type={values.showPassword ? 'text' : 'password'}
           id="password" placeholder="Password" required
@@ -103,6 +102,6 @@ export const Register = () => {
           <Button type="submit">Register</Button>
           Already registered? <Link to="/login">Login</Link>
       </Stack>
-    </main>
+    </Box>
   )
 }
