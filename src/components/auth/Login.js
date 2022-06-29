@@ -92,7 +92,7 @@ export const Login = () => {
               </InputAdornment>
             }
           />
-          <Button variant="contained" type="submit" id="sign-in-button">Sign In</Button>
+          <Button onClick={()=>handleLogin} variant="contained" type="submit" id="sign-in-button">Sign In</Button>
 
           <section>
             <Link to="/register">Not a member yet?</Link>
