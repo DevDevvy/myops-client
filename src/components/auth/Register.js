@@ -2,17 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
-import Stack from "@mui/material/Stack"
-import { Box, Button, TextField } from "@material-ui/core"
-import InputAdornment from '@mui/material/InputAdornment';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import IconButton from '@mui/material/IconButton';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
-// TODO: This should get you started on registering a new user. 
-// Add new fields depending on your server side registration
+
 export const Register = () => {
   const username = useRef()
   const password = useRef()
@@ -39,18 +29,7 @@ export const Register = () => {
     })
   }
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
-  };
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
+
   return (
     <main>
     <form onSubmit={handleRegister}>
