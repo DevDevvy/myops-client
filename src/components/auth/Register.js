@@ -55,7 +55,7 @@ export const Register = () => {
         <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
       </fieldset>
       <fieldset>
-        <button type="submit">Register</button>
+        <button className="login" type="submit">Register</button>
       </fieldset>
     </form>
     <section>

@@ -44,3 +44,6 @@
     margin-top: 2em;
 }
 
+.login {
+    cursor: pointer;
+}
