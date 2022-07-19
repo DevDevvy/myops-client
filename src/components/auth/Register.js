@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
+import { Button } from "@material-ui/core"
 
 export const Register = () => {
   const username = useRef()
@@ -31,7 +32,7 @@ export const Register = () => {
 
 
   return (
-    <main>
+    <main id="form-container">
     <form onSubmit={handleRegister}>
       <h3>Register an account</h3>
       <fieldset>
@@ -54,8 +55,8 @@ export const Register = () => {
         <label htmlFor="inputLastName"> Quick Bio </label>
         <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
       </fieldset>
-      <fieldset>
-        <button className="login" type="submit">Register</button>
+      <fieldset className="button-container">
+        <Button variant="contained" className="login" type="submit">Register</Button>
       </fieldset>
     </form>
     <section>
