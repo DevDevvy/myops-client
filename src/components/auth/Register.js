@@ -56,7 +56,7 @@ export const Register = () => {
         <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
       </fieldset>
       <fieldset className="button-container">
-        <Button variant="contained" className="login" type="submit">Register</Button>
+        <Button variant="contained" className="login" onClick="void(0)" type="submit">Register</Button>
       </fieldset>
     </form>
     <section>
