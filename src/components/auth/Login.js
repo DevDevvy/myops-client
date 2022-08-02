@@ -46,7 +46,7 @@ export const Login = () => {
             <input ref={password} type="password" id="password" placeholder="Password" required />
           </fieldset>
           <fieldset className="button-container">
-            <Button variant="contained" className="login" type="submit">Sign In</Button>
+            <Button variant="contained" onClick="void(0)" className="login" type="submit">Sign In</Button>
           </fieldset>
         </form>
       </section>
