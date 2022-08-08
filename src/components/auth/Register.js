@@ -33,7 +33,7 @@ export const Register = () => {
 
   return (
     <main id="form-container">
-    <form onSubmit={handleRegister}>
+    <form >
       <h3>Register an account</h3>
       <fieldset>
         <label htmlFor="inputUsername">Username</label>
@@ -56,7 +56,7 @@ export const Register = () => {
         <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
       </fieldset>
       <fieldset className="button-container">
-        <Button variant="contained" className="login" type="submit">Register</Button>
+        <Button variant="contained" className="login" onClick={handleRegister} type="submit">Register</Button>
       </fieldset>
     </form>
     <section>
