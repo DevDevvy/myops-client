@@ -11,7 +11,7 @@ export const Register = () => {
   const firstName = useRef()
   const lastName = useRef()
   const bio = useRef()
-  
+
 
   const handleRegister = (e) => {
     e.preventDefault()
@@ -33,35 +33,33 @@ export const Register = () => {
 
   return (
     <main id="form-container">
-    <form >
-      <h3>Register an account</h3>
-      <fieldset>
-        <label htmlFor="inputUsername">Username</label>
-        <input ref={username} type="text" name="username" placeholder="Username" required />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="inputPassword"> Password </label>
-        <input ref={password} type="password" name="password" placeholder="Password" required />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="inputFirstName"> First Name </label>
-        <input ref={firstName} type="text" name="firstName" placeholder="First Name" required />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="inputLastName"> Last Name </label>
-        <input ref={lastName} type="text" name="lastName" placeholder="Last Name" required />
-      </fieldset>
-      <fieldset>
-        <label htmlFor="inputLastName"> Quick Bio </label>
-        <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
-      </fieldset>
-      <fieldset className="button-container">
-        <Button variant="contained" className="login" onClick={handleRegister} type="submit">Register</Button>
-      </fieldset>
-    </form>
-    <section>
-      Already registered? <Link to="/login">Login</Link>
-    </section>
-  </main>
+      <form >
+        <h3>Register an account</h3>
+        <fieldset>
+          <label htmlFor="inputUsername">Username</label>
+          <input ref={username} type="text" name="username" placeholder="Username" required />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputPassword"> Password </label>
+          <input ref={password} type="password" name="password" placeholder="Password" required />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputFirstName"> First Name </label>
+          <input ref={firstName} type="text" name="firstName" placeholder="First Name" required />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputLastName"> Last Name </label>
+          <input ref={lastName} type="text" name="lastName" placeholder="Last Name" required />
+        </fieldset>
+        <fieldset>
+          <label htmlFor="inputLastName"> Quick Bio </label>
+          <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
+        </fieldset>
+      </form>
+      <Button variant="contained" className="login" onClick={handleRegister} type="submit">Register</Button>
+      <section>
+        Already registered? <Link to="/login">Login</Link>
+      </section>
+    </main>
   )
 }
