@@ -30,12 +30,16 @@ export const Login = () => {
   }
 
   return (
-    <main >
+    <main className="login-container">
       <dialog ref={invalidDialog}>
         <div>Username or password was not valid.</div>
         <button onClick={e => invalidDialog.current.close()}>Close</button>
       </dialog>
       <section className="sign-in-container">
+        <div className="welcome">
+          <h2>Welcome to MyOps</h2>
+          <p>Please sign in or become a member</p>
+        </div>
         <form onSubmit={handleLogin}>
           <fieldset>
             <label htmlFor="inputUsername"> Username</label>
@@ -46,7 +50,7 @@ export const Login = () => {
             <input ref={password} type="password" id="password" placeholder="Password" required />
           </fieldset>
           <fieldset className="button-container">
-            <Button variant="contained" onClick="void(0)" className="login" type="submit">Sign In</Button>
+            <Button variant="contained" className="login" type="submit">Sign In</Button>
           </fieldset>
         </form>
       </section>
