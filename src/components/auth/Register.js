@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useRef } from "react"
 import { Link, useHistory } from "react-router-dom"
 import { registerUser } from "./AuthManager"
 import './Auth.css'
@@ -33,8 +33,8 @@ export const Register = () => {
 
   return (
     <main id="form-container">
-      <form >
-        <h3>Register an account</h3>
+      <form id="register-form">
+        <h3 id="register">Register an account</h3>
         <fieldset>
           <label htmlFor="inputUsername">Username</label>
           <input ref={username} type="text" name="username" placeholder="Username" required />
@@ -51,12 +51,12 @@ export const Register = () => {
           <label htmlFor="inputLastName"> Last Name </label>
           <input ref={lastName} type="text" name="lastName" placeholder="Last Name" required />
         </fieldset>
-        <fieldset>
-          <label htmlFor="inputLastName"> Quick Bio </label>
-          <input ref={bio} type="text" name="bio" placeholder="Who am I..." required />
+        <fieldset id="bio">
+          <label htmlFor="inputBio"> Quick Bio </label>
+          <textarea ref={bio} type="text" name="bio" placeholder="Who am I..." required />
         </fieldset>
       </form>
-      <button variant="contained" className="login" onClick={handleRegister} type="submit">Register</button>
+      <Button variant="contained" className="login" onClick={handleRegister} type="submit">Register</Button>
       <section>
         Already registered? <Link to="/login">Login</Link>
       </section>

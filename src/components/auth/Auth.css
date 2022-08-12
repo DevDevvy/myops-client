@@ -9,6 +9,8 @@
     padding-bottom: 2.5em;
     background: rgb(14,12,48);
     background: linear-gradient(310deg, rgb(46, 42, 127) 0%, rgba(119,148,207,1) 35%, rgba(158,228,242,1) 80%);
+    box-shadow: .5em .5em .5em;
+    margin-bottom: 1em;
 }
 
 .login-container{
@@ -29,9 +31,26 @@
     align-items: center;
     margin: .2em;
     flex-direction: column;
+    padding: 2em;
+}
+#form-container fieldset{
+    margin: 1em;
+    padding: 1em;
+}
+#form-container fieldset input{
+    line-height: 2;
+    box-shadow:inset 0 0 1px 1px #888;
+    background: #fff;
     
 }
-
+#form-container fieldset textarea{
+    box-shadow:inset 0 0 2px 2px #888;
+    background: #fff;
+    
+}
+#form-container label{
+    margin: 1em;
+}
 #sign-in-button{
     margin: .6em;
 }
@@ -57,4 +76,21 @@
 .button-container{
     display: flex;
     justify-content: center;
+}
+
+#bio{
+    display: flex;
+    justify-content: center;
+}
+#register-form{
+    background: linear-gradient(310deg, rgb(46, 42, 127) 0%, rgba(119,148,207,1) 35%, rgba(158,228,242,1) 80%);
+    margin-bottom: 1em;
+    box-shadow: .5em .5em .5em;
+}
+#register{
+    text-align: center;
+}
+
+#form-container section{
+    margin: 1em;
 }
