@@ -6,7 +6,8 @@ import StarIcon from '@mui/icons-material/Star';
 import { Divider } from '@mui/material';
 import "./CheckInForm.css"
 import { labels } from './CheckinData';
-
+// returns 1-10 rating list of data points to record for check in
+// props pulls in check in form states
 export const RatingList = (props) => {
 
     // styling for star rating
@@ -44,11 +45,16 @@ export const RatingList = (props) => {
             }}
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
+
         {props.value.mood_score !== null && (
-            <Box sx={{ ml: 2 }}>{labels[props.hover.mood_score !== -1 ? props.hover.mood_score : props.value.mood_score]}</Box>
+            <Box
+                sx={{ ml: 2 }}>
+                {labels[props.hover.mood_score !== -1 ? props.hover.mood_score : props.value.mood_score]}
+            </Box>
         )}
 
         <Divider variant="inset" component="p" />
+
         <h3>How did I do with self-talk?</h3>
         <h4>Were my thoughts about myself or my work mainly negative, or was I compassionate towards myself and celebrated small wins...</h4>
 
@@ -68,11 +74,16 @@ export const RatingList = (props) => {
             }}
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
+
         {props.value.self_talk !== null && (
-            <Box sx={{ ml: 2 }}>{labels[props.hover.self_talk !== -1 ? props.hover.self_talk : props.value.self_talk]}</Box>
+            <Box
+                sx={{ ml: 2 }}>
+                {labels[props.hover.self_talk !== -1 ? props.hover.self_talk : props.value.self_talk]}
+            </Box>
         )}
 
         <Divider variant="inset" component="p" />
+
         <h3>How was the quality of my sleep last night?</h3>
         <h4>Did I wake up a lot, not sleep very much, or sleep like a rock...</h4>
 
@@ -92,11 +103,16 @@ export const RatingList = (props) => {
             }}
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
+
         {props.value.sleep_quality !== null && (
-            <Box sx={{ ml: 2 }}>{labels[props.hover.sleep_quality !== -1 ? props.hover.sleep_quality : props.value.sleep_quality]}</Box>
+            <Box
+                sx={{ ml: 2 }}>
+                {labels[props.hover.sleep_quality !== -1 ? props.hover.sleep_quality : props.value.sleep_quality]}
+            </Box>
         )}
 
         <Divider variant="inset" component="p" />
+
         <h3>How well did I make use of my coping strategies?</h3>
         <h4>Did I remember to take a deep breath, did I use ...</h4>
 
@@ -117,7 +133,10 @@ export const RatingList = (props) => {
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
         {props.value.coping_strategies !== null && (
-            <Box sx={{ ml: 2 }}>{labels[props.hover.coping_strategies !== -1 ? props.hover.coping_strategies : props.value.coping_strategies]}</Box>
+            <Box
+                sx={{ ml: 2 }}>
+                {labels[props.hover.coping_strategies !== -1 ? props.hover.coping_strategies : props.value.coping_strategies]}
+            </Box>
         )}
 
         <Divider variant="inset" />
@@ -141,7 +160,10 @@ export const RatingList = (props) => {
             emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
         />
         {props.value.productivity !== null && (
-            <Box sx={{ ml: 2 }}>{labels[props.hover.productivity !== -1 ? props.hover.productivity : props.value.productivity]}</Box>
+            <Box
+                sx={{ ml: 2 }}>
+                {labels[props.hover.productivity !== -1 ? props.hover.productivity : props.value.productivity]}
+            </Box>
         )}
     </div>
 }

@@ -24,11 +24,15 @@ export const JournalList = ({ journals, setJournals }) => {
         setOpen(false);
     };
     return <article className="journal-list-container">
+
         <Button component={Link} to="/newjournal" variant="contained" size="small" id="journal-button" >
             New Journal
         </Button>
+
         <h2 className="authored-tips-title">Journal Entries</h2>
+
         < Divider variant="middle" />
+
         <div className="journals-container">
         {
             journals.map(
@@ -58,6 +62,7 @@ export const JournalList = ({ journals, setJournals }) => {
             ).reverse()
         }
         </div>
+
         <Dialog
             open={open}
             onClose={handleClose}
@@ -65,8 +70,9 @@ export const JournalList = ({ journals, setJournals }) => {
             <DialogTitle id="alert-dialog-title">
                 {"Permanently Delete Entry?"}
             </DialogTitle>
-            <DialogContent>
 
+            <DialogContent>
+            <h3>Delete Entry?</h3>
             </DialogContent>
             <DialogActions>
                 <Button onClick={handleClose}>Cancel</Button>

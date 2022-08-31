@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { getCheckInsByDays } from './CheckInManager';
 
 export const CheckInSearchBar = ({ setCheckins }) => {
-    
+
     const [timeline, setTimeline] = useState([
         // api calls number of days- change "number" value for specific amount of days
         { name: "1 week", number: 7 }, { name: "2 weeks", number: 14 },
@@ -19,7 +19,7 @@ export const CheckInSearchBar = ({ setCheckins }) => {
         getCheckInsByDays(event.target.value)
             .then(data => setCheckins(data))
     };
-
+    // returns list of timelines to choose from that changes view of charts
     return (
         <div>
             <FormControl error variant="standard" sx={{ m: 1, minWidth: 130 }}>
@@ -36,7 +36,9 @@ export const CheckInSearchBar = ({ setCheckins }) => {
                     </MenuItem>
                     {
                         timeline.map(time => {
-                            return <MenuItem key={`time--${time.number}`} value={time.number}>{time.name}</MenuItem>
+                            return <MenuItem key={`time--${time.number}`} value={time.number}>
+                                {time.name}
+                            </MenuItem>
                         })
                     }
                 </Select>
